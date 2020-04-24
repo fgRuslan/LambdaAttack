@@ -8,6 +8,7 @@ import org.apache.commons.cli.ParseException;
 public class Main {
 
     public static void main(String[] args) {
+    	System.out.println("Edition by fgRuslan");
         Thread.setDefaultUncaughtExceptionHandler((thread, throwable) -> {
             LambdaAttack.getLogger().log(Level.SEVERE, throwable.getMessage(), throwable);
         });

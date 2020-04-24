@@ -120,6 +120,12 @@
             <artifactId>mcauthlib</artifactId>
             <version>1.0</version>
         </dependency>
+		
+		<dependency>
+			<groupId>com.github.Steveice10</groupId>
+			<artifactId>mcprotocollib</artifactId>
+			<version>1.15-1</version>
+		</dependency>
 
         <dependency>
             <groupId>commons-cli</groupId>

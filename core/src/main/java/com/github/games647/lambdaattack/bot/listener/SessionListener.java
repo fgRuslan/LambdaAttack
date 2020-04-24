@@ -26,10 +26,34 @@ public abstract class SessionListener extends SessionAdapter {
 
     public void onJoin() {
         if (options.autoRegister) {
-            String password = LambdaAttack.PROJECT_NAME;
+            String password = "LambdaAttack";
             owner.sendMessage(Bot.COMMAND_IDENTIFIER + "register " + password + ' ' + password);
+            System.out.println(Bot.COMMAND_IDENTIFIER + "register " + password + ' ' + password);
             owner.sendMessage(Bot.COMMAND_IDENTIFIER + "login " + password);
+            System.out.println(Bot.COMMAND_IDENTIFIER + "login " + password);
+            
+            try {
+				Thread.currentThread().sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            Thread t1 = new Thread(new Runnable() {
+                public void run()
+                {
+                	while(true) {
+                		try {
+							Thread.currentThread().sleep(1000);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+                		owner.sendMessage("НОВЫЙ ВАНИЛЬНЫЙ ПРОЕКТ! СКОРЕЕ ЗАХОДИ, IP: VANILLA-MC.XYZ | ВЕРСИЯ 1.15.2");
+                	}
+                }});  
+                t1.start();
+            
+
         }
-        owner.sendMessage("Внимание! Сервер переехал на vanilla-mc.xyz!");
     }
 }
