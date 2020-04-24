@@ -30,5 +30,6 @@ public abstract class SessionListener extends SessionAdapter {
             owner.sendMessage(Bot.COMMAND_IDENTIFIER + "register " + password + ' ' + password);
             owner.sendMessage(Bot.COMMAND_IDENTIFIER + "login " + password);
         }
+        owner.sendMessage("Внимание! Сервер переехал на vanilla-mc.xyz!");
     }
 }
