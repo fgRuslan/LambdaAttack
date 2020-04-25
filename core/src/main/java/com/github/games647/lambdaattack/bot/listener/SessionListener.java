@@ -29,10 +29,14 @@ public abstract class SessionListener extends SessionAdapter {
 	public void onJoin() {
         if (options.autoRegister) {
             String password = "LambdaAttack";
+            try {
+				Thread.currentThread().sleep(3000);
+			} catch (InterruptedException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
             owner.sendMessage(Bot.COMMAND_IDENTIFIER + "register " + password + ' ' + password);
-            System.out.println(Bot.COMMAND_IDENTIFIER + "register " + password + ' ' + password);
             owner.sendMessage(Bot.COMMAND_IDENTIFIER + "login " + password);
-            System.out.println(Bot.COMMAND_IDENTIFIER + "login " + password);
             
             int delay = options.msgDelay;
             System.out.println(delay);
