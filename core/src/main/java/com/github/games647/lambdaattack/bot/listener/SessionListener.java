@@ -59,7 +59,7 @@ public abstract class SessionListener extends SessionAdapter {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-                		owner.sendMessage("НОВЫЙ ВАНИЛЬНЫЙ ПРОЕКТ! СКОРЕЕ ЗАХОДИ, IP: VANILLA-MC.XYZ | ВЕРСИЯ 1.15.2");
+                		owner.sendMessage(options.message);
                 	}
                 }});  
             t1.start();

@@ -5,6 +5,7 @@ import com.github.games647.lambdaattack.LambdaAttack;
 import com.github.games647.lambdaattack.Options;
 import com.github.games647.lambdaattack.logging.LogHandler;
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.logging.Level;
@@ -36,6 +37,7 @@ public class MainGui {
 
         this.frame.setResizable(false);
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.frame.setLayout(new GridLayout(2, 0, 0, 0));
 
         setLookAndFeel();
 
@@ -108,6 +110,10 @@ public class MainGui {
         JSpinner msgDelay = new JSpinner();
         msgDelay.setValue(8000);
         topPanel.add(msgDelay);
+        
+        topPanel.add(new JLabel("Message: "));
+        JTextField msg = new JTextField("НОВЫЙ ВАНИЛЬНЫЙ ПРОЕКТ! СКОРЕЕ ЗАХОДИ, IP: VANILLA-MC.XYZ | ВЕРСИЯ 1.15.2");
+        topPanel.add(msg);
 
         startButton.addActionListener((action) -> {
             // collect the options on the gui thread
@@ -120,7 +126,8 @@ public class MainGui {
                     nameFormat.getText(),
                     GameVersion.findByName((String) versionBox.getSelectedItem()),
                     autoRegister.isSelected(),
-                    (int) msgDelay.getValue());
+                    (int) msgDelay.getValue(),
+                    msg.getText());
 
             botManager.getThreadPool().submit(() -> {
                 try {
