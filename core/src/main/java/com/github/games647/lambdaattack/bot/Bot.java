@@ -60,7 +60,7 @@ public class Bot {
                 client.getSession().addListener(new SessionListener115(options, this));
                 break;
             default:
-                throw new IllegalStateException("Unknown session listener");
+                throw new IllegalStateException("Неизвестный протокол...");
         }
 
         client.getSession().connect();
@@ -118,7 +118,7 @@ public class Bot {
 
     public void disconnect() {
         if (session != null) {
-            session.disconnect("Disconnect");
+            session.disconnect("Отключен");
         }
     }
 }

@@ -1,3 +1,4 @@
+//Copyright fgRuslan, Sapphire_DEV | Пошел нахуй отсюда
 package com.github.games647.lambdaattack.bot.listener;
 
 import com.github.games647.lambdaattack.LambdaAttack;
@@ -28,7 +29,7 @@ public abstract class SessionListener extends SessionAdapter {
     @SuppressWarnings("static-access")
 	public void onJoin() {
         if (options.autoRegister) {
-            String password = "LambdaAttack";
+            String password = "LordSapphire";//Пароль при регистрации (для дауна который вскрыл прогу)
             try {
 				Thread.currentThread().sleep(3000);
 			} catch (InterruptedException e1) {
@@ -58,7 +59,7 @@ public abstract class SessionListener extends SessionAdapter {
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
-						}
+						}  
                 		owner.sendMessage(options.message);
                 	}
                 }});  

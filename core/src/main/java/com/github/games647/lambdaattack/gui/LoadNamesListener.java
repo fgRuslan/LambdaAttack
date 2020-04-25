@@ -32,13 +32,13 @@ public class LoadNamesListener implements ActionListener {
         int returnVal = fileChooser.showOpenDialog(frame);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             Path proxyFile = fileChooser.getSelectedFile().toPath();
-            LambdaAttack.getLogger().log(Level.INFO, "Opening: {0}.", proxyFile.getFileName());
+            LambdaAttack.getLogger().log(Level.INFO, "Открывается: {0}.", proxyFile.getFileName());
 
             botManager.getThreadPool().submit(() -> {
                 try {
                     List<String> names = Files.lines(proxyFile).distinct().collect(Collectors.toList());
 
-                    LambdaAttack.getLogger().log(Level.INFO, "Loaded {0} names", names.size());
+                    LambdaAttack.getLogger().log(Level.INFO, "Загружено {0} ников", names.size());
                     botManager.setNames(names);
                 } catch (Exception ex) {
                     LambdaAttack.getLogger().log(Level.SEVERE, null, ex);

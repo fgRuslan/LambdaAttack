@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 public class LambdaAttack {
 
-    public static final String PROJECT_NAME = "LambdaAttack";
+    public static final String PROJECT_NAME = "LordSapphire";
 
     private static final Logger LOGGER = Logger.getLogger(PROJECT_NAME);
     private static final LambdaAttack instance = new LambdaAttack();

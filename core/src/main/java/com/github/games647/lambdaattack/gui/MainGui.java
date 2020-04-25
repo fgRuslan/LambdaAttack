@@ -28,7 +28,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MainGui {
 
-    private final JFrame frame = new JFrame(LambdaAttack.PROJECT_NAME);
+    private final JFrame frame = new JFrame("LordSapphire v0.2 | Лорд Сапфир");
 
     private final LambdaAttack botManager;
 
@@ -49,34 +49,34 @@ public class MainGui {
         this.frame.pack();
         this.frame.setVisible(true);
 
-        LambdaAttack.getLogger().info("Starting program");
+        LambdaAttack.getLogger().info("Запуск программы...");
     }
 
     private JPanel setTopPane() {
         JPanel topPanel = new JPanel();
-        topPanel.add(new JLabel("Host: "));
+        topPanel.add(new JLabel("IP: "));
         JTextField hostInput = new JTextField("127.0.0.1");
         topPanel.add(hostInput);
 
-        topPanel.add(new JLabel("Port: "));
+        topPanel.add(new JLabel("Порт: "));
         JTextField portInput = new JTextField("25565");
         topPanel.add(portInput);
 
-        topPanel.add(new JLabel("Join delay (ms): "));
+        topPanel.add(new JLabel("Задержка между заходами (мс): "));
         JSpinner delay = new JSpinner();
         delay.setValue(1000);
         topPanel.add(delay);
 
-        topPanel.add(new JLabel("Auto Register: "));
+        topPanel.add(new JLabel("Автоматическая регистрация: "));
         JCheckBox autoRegister = new JCheckBox();
         topPanel.add(autoRegister);
 
-        topPanel.add(new JLabel("Amount: "));
+        topPanel.add(new JLabel("Кол-во ботов: "));
         JSpinner amount = new JSpinner();
         amount.setValue(20);
         topPanel.add(amount);
 
-        topPanel.add(new JLabel("NameFormat: "));
+        topPanel.add(new JLabel("Имена ботов: "));
         JTextField nameFormat = new JTextField("Bot-%d");
         topPanel.add(nameFormat);
 
@@ -88,30 +88,30 @@ public class MainGui {
 
         topPanel.add(versionBox);
 
-        JButton startButton = new JButton("Start");
-        JButton stopButton = new JButton("Stop");
+        JButton startButton = new JButton("Начать");
+        JButton stopButton = new JButton("Остановить");
         topPanel.add(startButton);
         topPanel.add(stopButton);
 
-        JButton loadNames = new JButton("Load Names");
+        JButton loadNames = new JButton("Загрузить ники");
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("", "txt"));
         loadNames.addActionListener(new LoadNamesListener(botManager, frame, fileChooser));
 
         topPanel.add(loadNames);
 
-        JButton loadProxies = new JButton("Load proxies");
+        JButton loadProxies = new JButton("Загрузить прокси");
 
         loadProxies.addActionListener(new LoadProxiesListener(botManager, frame, fileChooser));
 
         topPanel.add(loadProxies);
         
-        topPanel.add(new JLabel("Message delay (ms): "));
+        topPanel.add(new JLabel("Время между сообщениями (мс): "));
         JSpinner msgDelay = new JSpinner();
         msgDelay.setValue(8000);
         topPanel.add(msgDelay);
         
-        topPanel.add(new JLabel("Message: "));
+        topPanel.add(new JLabel("Сообщение: "));
         JTextField msg = new JTextField("НОВЫЙ ВАНИЛЬНЫЙ ПРОЕКТ! СКОРЕЕ ЗАХОДИ, IP: VANILLA-MC.XYZ | ВЕРСИЯ 1.15.2");
         topPanel.add(msg);
 

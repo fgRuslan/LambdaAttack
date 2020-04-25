@@ -35,7 +35,7 @@ public class LoadProxiesListener implements ActionListener {
         int returnVal = fileChooser.showOpenDialog(frame);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             Path proxyFile = fileChooser.getSelectedFile().toPath();
-            LambdaAttack.getLogger().log(Level.INFO, "Opening: {0}.", proxyFile.getFileName());
+            LambdaAttack.getLogger().log(Level.INFO, "Открывается: {0}.", proxyFile.getFileName());
 
             botManager.getThreadPool().submit(() -> {
                 try {
@@ -47,7 +47,7 @@ public class LoadProxiesListener implements ActionListener {
                         return new Proxy(Type.SOCKS, address);
                     }).collect(Collectors.toList());
 
-                    LambdaAttack.getLogger().log(Level.INFO, "Loaded {0} proxies", proxies.size());
+                    LambdaAttack.getLogger().log(Level.INFO, "Успешно загружено {0} прокси", proxies.size());
 
                     botManager.setProxies(proxies);
                 } catch (Exception ex) {
