@@ -9,9 +9,10 @@ public class Options {
     public final String botNameFormat;
     public final GameVersion gameVersion;
     public final boolean autoRegister;
+    public final int msgDelay;
 
     public Options(String hostname, int port, int amount, int joinDelayMs,
-                   String botNameFormat, GameVersion gameVersion, boolean autoRegister) {
+                   String botNameFormat, GameVersion gameVersion, boolean autoRegister, int msgDelay) {
         this.hostname = hostname;
         this.port = port;
         this.amount = amount;
@@ -19,5 +20,6 @@ public class Options {
         this.botNameFormat = botNameFormat;
         this.gameVersion = gameVersion;
         this.autoRegister = autoRegister;
+        this.msgDelay = msgDelay;
     }
 }

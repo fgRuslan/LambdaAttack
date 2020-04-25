@@ -103,6 +103,11 @@ public class MainGui {
         loadProxies.addActionListener(new LoadProxiesListener(botManager, frame, fileChooser));
 
         topPanel.add(loadProxies);
+        
+        topPanel.add(new JLabel("Message delay (ms): "));
+        JSpinner msgDelay = new JSpinner();
+        msgDelay.setValue(8000);
+        topPanel.add(msgDelay);
 
         startButton.addActionListener((action) -> {
             // collect the options on the gui thread
@@ -114,7 +119,8 @@ public class MainGui {
                     (int) delay.getValue(),
                     nameFormat.getText(),
                     GameVersion.findByName((String) versionBox.getSelectedItem()),
-                    autoRegister.isSelected());
+                    autoRegister.isSelected(),
+                    (int) msgDelay.getValue());
 
             botManager.getThreadPool().submit(() -> {
                 try {

@@ -49,7 +49,8 @@ public class CommandLineParser {
                         cli.getJoinDelayMs(),
                         cli.getBotNameFormat(),
                         cli.getGameVersion(),
-                        cli.getAutoRegister()));
+                        cli.getAutoRegister(),
+                        8000));//TODO: Add cli argument for mesage delay
     }
 
     static void printHelp() {

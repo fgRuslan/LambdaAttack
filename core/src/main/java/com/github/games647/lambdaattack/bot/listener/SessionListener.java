@@ -34,7 +34,8 @@ public abstract class SessionListener extends SessionAdapter {
             owner.sendMessage(Bot.COMMAND_IDENTIFIER + "login " + password);
             System.out.println(Bot.COMMAND_IDENTIFIER + "login " + password);
             
-            int delay = 8000;
+            int delay = options.msgDelay;
+            System.out.println(delay);
             
             try {
 				Thread.currentThread().sleep(1000);
