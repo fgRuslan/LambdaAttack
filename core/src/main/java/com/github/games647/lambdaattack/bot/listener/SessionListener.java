@@ -13,6 +13,7 @@ public abstract class SessionListener extends SessionAdapter {
     protected final Options options;
     protected final Bot owner;
 
+
     public SessionListener(Options options, Bot owner) {
         this.options = options;
         this.owner = owner;
@@ -24,7 +25,8 @@ public abstract class SessionListener extends SessionAdapter {
         owner.getLogger().log(Level.INFO, "Disconnected: {0}", reason);
     }
 
-    public void onJoin() {
+    @SuppressWarnings("static-access")
+	public void onJoin() {
         if (options.autoRegister) {
             String password = "LambdaAttack";
             owner.sendMessage(Bot.COMMAND_IDENTIFIER + "register " + password + ' ' + password);
@@ -32,18 +34,22 @@ public abstract class SessionListener extends SessionAdapter {
             owner.sendMessage(Bot.COMMAND_IDENTIFIER + "login " + password);
             System.out.println(Bot.COMMAND_IDENTIFIER + "login " + password);
             
+            int delay = 8000;
+            
             try {
 				Thread.currentThread().sleep(1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+            
+            //Запускаем поток который каждую секунду будет спамить
             Thread t1 = new Thread(new Runnable() {
                 public void run()
                 {
                 	while(true) {
                 		try {
-							Thread.currentThread().sleep(1000);
+							Thread.currentThread().sleep(delay);
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -51,8 +57,7 @@ public abstract class SessionListener extends SessionAdapter {
                 		owner.sendMessage("НОВЫЙ ВАНИЛЬНЫЙ ПРОЕКТ! СКОРЕЕ ЗАХОДИ, IP: VANILLA-MC.XYZ | ВЕРСИЯ 1.15.2");
                 	}
                 }});  
-                t1.start();
-            
+            t1.start();
 
         }
     }
