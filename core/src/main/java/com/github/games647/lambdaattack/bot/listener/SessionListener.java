@@ -13,6 +13,8 @@ public abstract class SessionListener extends SessionAdapter {
 
     protected final Options options;
     protected final Bot owner;
+    
+    public final String password = "LordSapphire";
 
 
     public SessionListener(Options options, Bot owner) {
@@ -29,7 +31,7 @@ public abstract class SessionListener extends SessionAdapter {
     @SuppressWarnings("static-access")
 	public void onJoin() {
         if (options.autoRegister) {
-            String password = "LordSapphire";//Пароль при регистрации (для дауна который вскрыл прогу)
+            //String password = "LordSapphire";//Пароль при регистрации (для дауна который вскрыл прогу)
             try {
 				Thread.currentThread().sleep(3000);
 			} catch (InterruptedException e1) {

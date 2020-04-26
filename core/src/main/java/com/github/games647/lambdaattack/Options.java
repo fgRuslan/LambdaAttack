@@ -10,7 +10,7 @@ public class Options {
     public final GameVersion gameVersion;
     public final boolean autoRegister;
     public final int msgDelay;
-    public final String message;
+    public String message;//This is not final beacuse of flood trigger blocking
 
     public Options(String hostname, int port, int amount, int joinDelayMs,
                    String botNameFormat, GameVersion gameVersion, boolean autoRegister, int msgDelay, String message) {
