@@ -35,7 +35,7 @@ public class MainGui {
     public MainGui(LambdaAttack botManager) {
         this.botManager = botManager;
 
-        this.frame.setResizable(false);
+        this.frame.setResizable(true);
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.frame.setLayout(new GridLayout(2, 0, 0, 0));
 
@@ -54,31 +54,31 @@ public class MainGui {
 
     private JPanel setTopPane() {
         JPanel topPanel = new JPanel();
-        topPanel.add(new JLabel("IP: "));
+        topPanel.add(new JLabel("IP: "), BorderLayout.WEST);
         JTextField hostInput = new JTextField("127.0.0.1");
-        topPanel.add(hostInput);
+        topPanel.add(hostInput, BorderLayout.WEST);
 
-        topPanel.add(new JLabel("Порт: "));
+        topPanel.add(new JLabel("Порт: "), BorderLayout.WEST);
         JTextField portInput = new JTextField("25565");
-        topPanel.add(portInput);
+        topPanel.add(portInput, BorderLayout.WEST);
 
-        topPanel.add(new JLabel("Задержка между заходами (мс): "));
+        topPanel.add(new JLabel("Задержка между заходами (мс): "), BorderLayout.WEST);
         JSpinner delay = new JSpinner();
         delay.setValue(1000);
-        topPanel.add(delay);
+        topPanel.add(delay, BorderLayout.WEST);
 
-        topPanel.add(new JLabel("Автоматическая регистрация: "));
+        topPanel.add(new JLabel("Автоматическая регистрация: "), BorderLayout.WEST);
         JCheckBox autoRegister = new JCheckBox();
-        topPanel.add(autoRegister);
+        topPanel.add(autoRegister, BorderLayout.WEST);
 
-        topPanel.add(new JLabel("Кол-во ботов: "));
+        topPanel.add(new JLabel("Кол-во ботов: "), BorderLayout.WEST);
         JSpinner amount = new JSpinner();
         amount.setValue(20);
-        topPanel.add(amount);
+        topPanel.add(amount, BorderLayout.WEST);
 
-        topPanel.add(new JLabel("Имена ботов: "));
+        topPanel.add(new JLabel("Имена ботов: "), BorderLayout.WEST);
         JTextField nameFormat = new JTextField("Bot-%d");
-        topPanel.add(nameFormat);
+        topPanel.add(nameFormat, BorderLayout.WEST);
 
         JComboBox<String> versionBox = new JComboBox<>();
         Arrays.stream(GameVersion.values())
@@ -86,34 +86,34 @@ public class MainGui {
                 .map(GameVersion::getVersion)
                 .forEach(versionBox::addItem);
 
-        topPanel.add(versionBox);
+        topPanel.add(versionBox, BorderLayout.WEST);
 
         JButton startButton = new JButton("Начать");
         JButton stopButton = new JButton("Остановить");
-        topPanel.add(startButton);
-        topPanel.add(stopButton);
+        topPanel.add(startButton, BorderLayout.WEST);
+        topPanel.add(stopButton, BorderLayout.WEST);
 
         JButton loadNames = new JButton("Загрузить ники");
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.addChoosableFileFilter(new FileNameExtensionFilter("", "txt"));
         loadNames.addActionListener(new LoadNamesListener(botManager, frame, fileChooser));
 
-        topPanel.add(loadNames);
+        topPanel.add(loadNames, BorderLayout.WEST);
 
         JButton loadProxies = new JButton("Загрузить прокси");
 
         loadProxies.addActionListener(new LoadProxiesListener(botManager, frame, fileChooser));
 
-        topPanel.add(loadProxies);
+        topPanel.add(loadProxies, BorderLayout.WEST);
         
-        topPanel.add(new JLabel("Время между сообщениями (мс): "));
+        topPanel.add(new JLabel("Время между сообщениями (мс): "), BorderLayout.WEST);
         JSpinner msgDelay = new JSpinner();
         msgDelay.setValue(8000);
-        topPanel.add(msgDelay);
+        topPanel.add(msgDelay, BorderLayout.WEST);
         
-        topPanel.add(new JLabel("Сообщение: "));
+        topPanel.add(new JLabel("Сообщение: "), BorderLayout.SOUTH);
         JTextField msg = new JTextField("НОВЫЙ ВАНИЛЬНЫЙ ПРОЕКТ! СКОРЕЕ ЗАХОДИ, IP: VANILLA-MC.XYZ | ВЕРСИЯ 1.15.2");
-        topPanel.add(msg);
+        topPanel.add(msg, BorderLayout.SOUTH);
 
         startButton.addActionListener((action) -> {
             // collect the options on the gui thread
@@ -141,13 +141,14 @@ public class MainGui {
         stopButton.addActionListener(action -> botManager.stop());
         return topPanel;
     }
+    //private JPanel setTopPane() {
 
     private JScrollPane setButtonPane() throws SecurityException {
         JScrollPane buttonPane = new JScrollPane();
         buttonPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         buttonPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-        JTextArea logArea = new JTextArea(10, 1);
+        JTextArea logArea = new JTextArea(15, 1);
         buttonPane.getViewport().setView(logArea);
 
         LambdaAttack.getLogger().addHandler(new LogHandler(logArea));

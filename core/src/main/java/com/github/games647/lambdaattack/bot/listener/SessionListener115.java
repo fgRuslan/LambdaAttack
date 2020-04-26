@@ -27,7 +27,7 @@ public class SessionListener115 extends SessionListener {
         if (receiveEvent.getPacket() instanceof ServerChatPacket) {
             ServerChatPacket chatPacket = receiveEvent.getPacket();
             Message message = chatPacket.getMessage();
-            owner.getLogger().log(Level.INFO, "Received Message: {0}", message.getFullText());
+            owner.getLogger().log(Level.INFO, "Сообщение: {0}", message.getFullText());
             
             /**Captcha catcher**/
             if(message.getFullText().contains("каптчу")) {
