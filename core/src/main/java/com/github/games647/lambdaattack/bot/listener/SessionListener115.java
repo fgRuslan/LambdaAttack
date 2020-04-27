@@ -43,11 +43,12 @@ public class SessionListener115 extends SessionListener {
 				}
 				owner.sendMessage(Bot.COMMAND_IDENTIFIER + "register " + password + ' ' + password);
 				owner.sendMessage(Bot.COMMAND_IDENTIFIER + "login " + password);
+				didCaptcha = false;
 			}
 			/**End captcha catcher**/
 
 			/** Flood trigger blocker **/
-			if(Utils.checkSpamTrigger(message)) {
+			if(Utils.checkSpamTrigger(message.getFullText())) {
 				options.message = options.message + java.util.UUID.randomUUID().toString();//StringRandomizer.randomizeString(new Random(), "ABCDEFGHIJKLMNOPQRSTUVWXYZ", 10);
 			}
 			/** End flood blocker **/
