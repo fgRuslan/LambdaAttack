@@ -29,14 +29,14 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class MainGui {
 
-    private final JFrame frame = new JFrame("LordSapphire v0.2 | Лорд Сапфир");
+    private final JFrame frame = new JFrame("LordSapphire v0.3 | Лорд Сапфир");
 
     private final LambdaAttack botManager;
 
     public MainGui(LambdaAttack botManager) {
         this.botManager = botManager;
 
-        this.frame.setResizable(true);
+        this.frame.setResizable(false);
 		this.frame.setPreferredSize(new Dimension(600, 395));
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.frame.setLayout(new GridLayout(2, 0, 0, 0));
@@ -117,14 +117,6 @@ public class MainGui {
         JCheckBox autoRegister = new JCheckBox();
         topPanel.add(autoRegister, BorderLayout.WEST);
 
-        topPanel.add(new JLabel("Сообщение регистрации: "), BorderLayout.SOUTH);
-        JTextField regmes = new JTextField("/reg LordSapphire LordSapphire");
-        topPanel.add(regmes, BorderLayout.SOUTH);
-
-        topPanel.add(new JLabel("Сообщение авторизации: "), BorderLayout.SOUTH);
-        JTextField logmes = new JTextField("/login LordSapphire");
-        topPanel.add(logmes, BorderLayout.SOUTH);
-
         startButton.addActionListener((action) -> {
             // collect the options on the gui thread
             // for thread-safety
@@ -137,9 +129,7 @@ public class MainGui {
                     GameVersion.findByName((String) versionBox.getSelectedItem()),
                     autoRegister.isSelected(),
                     (int) msgDelay.getValue(),
-                    msg.getText(),
-                    regmes.getText(),
-                    logmes.getText());
+                    msg.getText());
 
             botManager.getThreadPool().submit(() -> {
                 try {

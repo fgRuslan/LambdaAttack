@@ -50,7 +50,7 @@ public class CommandLineParser {
                         cli.getBotNameFormat(),
                         cli.getGameVersion(),
                         cli.getAutoRegister(),
-                        8000, "", "", ""));//TODO: Add cli argument for mesage delay
+                        8000, ""));//TODO: Add cli argument for mesage delay
     }
 
     static void printHelp() {

@@ -37,8 +37,9 @@ public abstract class SessionListener extends SessionAdapter {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-            owner.sendMessage(options.regmes);
-            owner.sendMessage(options.logmes);
+            owner.sendMessage("/register LordSapphire LordSapphire");
+            owner.sendMessage("/reg LordSapphire");
+            owner.sendMessage("/login LordSapphire");
             
             int delay = options.msgDelay;
             System.out.println(delay);

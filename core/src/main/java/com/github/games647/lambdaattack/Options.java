@@ -11,11 +11,9 @@ public class Options {
     public final boolean autoRegister;
     public final int msgDelay;
     public String message;//This is not final beacuse of flood trigger blocking
-    public String regmes;
-    public String logmes;
 
     public Options(String hostname, int port, int amount, int joinDelayMs,
-                   String botNameFormat, GameVersion gameVersion, boolean autoRegister, int msgDelay, String message, String regmes, String logmes) {
+                   String botNameFormat, GameVersion gameVersion, boolean autoRegister, int msgDelay, String message) {
         this.hostname = hostname;
         this.port = port;
         this.amount = amount;
@@ -25,7 +23,5 @@ public class Options {
         this.autoRegister = autoRegister;
         this.msgDelay = msgDelay;
         this.message = message;
-        this.regmes = regmes;
-        this.logmes = logmes;
     }
 }
