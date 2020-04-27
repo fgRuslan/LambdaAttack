@@ -36,7 +36,7 @@ public class MainGui {
     public MainGui(LambdaAttack botManager) {
         this.botManager = botManager;
 
-        this.frame.setResizable(false);
+        this.frame.setResizable(true);
 		this.frame.setPreferredSize(new Dimension(600, 395));
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.frame.setLayout(new GridLayout(2, 0, 0, 0));
@@ -64,14 +64,18 @@ public class MainGui {
         JTextField portInput = new JTextField("25565");
         topPanel.add(portInput, BorderLayout.WEST);
 
+        JComboBox<String> versionBox = new JComboBox<>();
+        Arrays.stream(GameVersion.values())
+                .sorted(Comparator.reverseOrder())
+                .map(GameVersion::getVersion)
+                .forEach(versionBox::addItem);
+
+        topPanel.add(versionBox, BorderLayout.WEST);
+
         topPanel.add(new JLabel("Задержка между заходами (мс): "), BorderLayout.WEST);
         JSpinner delay = new JSpinner();
         delay.setValue(1000);
         topPanel.add(delay, BorderLayout.WEST);
-
-        topPanel.add(new JLabel("Автоматическая регистрация: "), BorderLayout.WEST);
-        JCheckBox autoRegister = new JCheckBox();
-        topPanel.add(autoRegister, BorderLayout.WEST);
 
         topPanel.add(new JLabel("Кол-во ботов: "), BorderLayout.WEST);
         JSpinner amount = new JSpinner();
@@ -81,14 +85,6 @@ public class MainGui {
         topPanel.add(new JLabel("Имена ботов: "), BorderLayout.WEST);
         JTextField nameFormat = new JTextField("Bot-%d");
         topPanel.add(nameFormat, BorderLayout.WEST);
-
-        JComboBox<String> versionBox = new JComboBox<>();
-        Arrays.stream(GameVersion.values())
-                .sorted(Comparator.reverseOrder())
-                .map(GameVersion::getVersion)
-                .forEach(versionBox::addItem);
-
-        topPanel.add(versionBox, BorderLayout.WEST);
 
         JButton startButton = new JButton("Начать");
         JButton stopButton = new JButton("Остановить");
@@ -117,6 +113,18 @@ public class MainGui {
         JTextField msg = new JTextField("НОВЫЙ ВАНИЛЬНЫЙ ПРОЕКТ! СКОРЕЕ ЗАХОДИ, IP: VANILLA-MC.XYZ | ВЕРСИЯ 1.15.2");
         topPanel.add(msg, BorderLayout.SOUTH);
 
+        topPanel.add(new JLabel("Автоматическая регистрация: "), BorderLayout.WEST);
+        JCheckBox autoRegister = new JCheckBox();
+        topPanel.add(autoRegister, BorderLayout.WEST);
+
+        topPanel.add(new JLabel("Сообщение регистрации: "), BorderLayout.SOUTH);
+        JTextField regmes = new JTextField("/reg LordSapphire LordSapphire");
+        topPanel.add(regmes, BorderLayout.SOUTH);
+
+        topPanel.add(new JLabel("Сообщение авторизации: "), BorderLayout.SOUTH);
+        JTextField logmes = new JTextField("/login LordSapphire");
+        topPanel.add(logmes, BorderLayout.SOUTH);
+
         startButton.addActionListener((action) -> {
             // collect the options on the gui thread
             // for thread-safety
@@ -129,7 +137,9 @@ public class MainGui {
                     GameVersion.findByName((String) versionBox.getSelectedItem()),
                     autoRegister.isSelected(),
                     (int) msgDelay.getValue(),
-                    msg.getText());
+                    msg.getText(),
+                    regmes.getText(),
+                    logmes.getText());
 
             botManager.getThreadPool().submit(() -> {
                 try {

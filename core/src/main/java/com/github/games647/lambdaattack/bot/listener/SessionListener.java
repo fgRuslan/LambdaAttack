@@ -24,7 +24,7 @@ public abstract class SessionListener extends SessionAdapter {
     @Override
     public void disconnected(DisconnectedEvent disconnectedEvent) {
         String reason = disconnectedEvent.getReason();
-        owner.getLogger().log(Level.INFO, "Disconnected: {0}", reason);
+        owner.getLogger().log(Level.INFO, "Отключен: {0}", reason);
     }
 
     @SuppressWarnings("static-access")
@@ -37,8 +37,8 @@ public abstract class SessionListener extends SessionAdapter {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-            owner.sendMessage(Bot.COMMAND_IDENTIFIER + "register " + password + ' ' + password);
-            owner.sendMessage(Bot.COMMAND_IDENTIFIER + "login " + password);
+            owner.sendMessage(options.regmes);
+            owner.sendMessage(options.logmes);
             
             int delay = options.msgDelay;
             System.out.println(delay);
