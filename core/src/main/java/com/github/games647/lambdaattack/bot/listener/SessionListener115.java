@@ -47,7 +47,7 @@ public class SessionListener115 extends SessionListener {
 			/**End captcha catcher**/
 
 			/** Flood trigger blocker **/
-			if(message.getFullText().contains("flood")) {
+			if(Utils.checkSpamTrigger(message)) {
 				options.message = options.message + java.util.UUID.randomUUID().toString();//StringRandomizer.randomizeString(new Random(), "ABCDEFGHIJKLMNOPQRSTUVWXYZ", 10);
 			}
 			/** End flood blocker **/
