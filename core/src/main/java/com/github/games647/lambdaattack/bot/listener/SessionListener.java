@@ -1,13 +1,12 @@
 //Copyright fgRuslan, Sapphire_DEV | Пошел нахуй отсюда
 package com.github.games647.lambdaattack.bot.listener;
 
-import com.github.games647.lambdaattack.LambdaAttack;
+import java.util.logging.Level;
+
 import com.github.games647.lambdaattack.Options;
 import com.github.games647.lambdaattack.bot.Bot;
 import com.github.steveice10.packetlib.event.session.DisconnectedEvent;
 import com.github.steveice10.packetlib.event.session.SessionAdapter;
-
-import java.util.logging.Level;
 
 public abstract class SessionListener extends SessionAdapter {
 
