@@ -5,6 +5,7 @@ import com.github.games647.lambdaattack.LambdaAttack;
 import com.github.games647.lambdaattack.Options;
 import com.github.games647.lambdaattack.logging.LogHandler;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -35,7 +36,8 @@ public class MainGui {
     public MainGui(LambdaAttack botManager) {
         this.botManager = botManager;
 
-        this.frame.setResizable(true);
+        this.frame.setResizable(false);
+		this.frame.setPreferredSize(new Dimension(600, 395));
         this.frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.frame.setLayout(new GridLayout(2, 0, 0, 0));
 
